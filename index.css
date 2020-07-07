@@ -1,0 +1,36 @@
+body {
+  background-color: black;
+}
+
+.keys {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.key {
+  background-color: rebeccapurple;
+  border: 2px solid black;
+
+  width: 10%;
+  transition: all 1.07s;
+  color: white;
+  text-align: center;
+  margin: 10px;
+}
+
+.playing {
+  transform: scale(1.2);
+  border-color: yellow;
+  border: 2px solid yellow;
+}
+
+.letter {
+  font-size: 2em;
+}
+
+.title {
+  font-size: 2em;
+  text-align: center;
+  color: purple;
+}

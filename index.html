@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Js Sound</title>
+  </head>
+  <body>
+    <h1 class="title">Sound keyCode</h1>
+    <div class="keys">
+      <div data-key="65" class="key">
+        <p class="letter">A</p>
+        <p>Bird</p>
+      </div>
+      <div data-key="90" class="key">
+        <p class="letter">Z</p>
+        <p>Wind</p>
+      </div>
+      <div data-key="69" class="key">
+        <p class="letter">E</p>
+        <p>Light rain</p>
+      </div>
+      <div data-key="81" class="key">
+        <p class="letter">Q</p>
+        <p>storm rain</p>
+      </div>
+      <div data-key="83" class="key">
+        <p class="letter">S</p>
+        <p>Sea</p>
+      </div>
+      <div data-key="68" class="key">
+        <p class="letter">D</p>
+        <p>Heart</p>
+      </div>
+    </div>
+  </body>
+  <audio data-key="65" src="sound/bird.wav"></audio>
+  <audio data-key="90" src="sound/wind.wav"></audio>
+  <audio data-key="69" src="sound/pluie1.wav"></audio>
+  <audio data-key="81" src="sound/pluie2.wav"></audio>
+  <audio data-key="83" src="sound/mer.wav"></audio>
+  <audio data-key="68" src="sound/heart.wav"></audio>
+
+  <script>
+    window.addEventListener('keydown', function (e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+      if (!audio) return;
+      audio.play();
+      audio.currentTime = 0;
+      key.classList.add('playing');
+      setTimeout(() => {}, 0.07);
+    });
+
+  
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return;
+      this.classList.remove('playing'); //stop transition sur css
+    }
+
+    const keys = document.querySelectorAll('.key');
+    keys.forEach((key) =>
+      key.addEventListener('transitionend', removeTransition)
+    );
+  </script>
+</html>
